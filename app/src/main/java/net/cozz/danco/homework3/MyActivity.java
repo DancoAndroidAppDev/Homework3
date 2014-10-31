@@ -4,6 +4,14 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.GridView;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import java.util.Arrays;
+import java.util.List;
 
 
 public class MyActivity extends Activity {
@@ -12,6 +20,23 @@ public class MyActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my);
+
+        final List<String> capitals =
+                Arrays.asList(getResources().getStringArray(R.array.capitals));
+
+        GridView gridView = (GridView) findViewById(R.id.grid_view);
+
+        // Instance of ImageAdapter Class
+        gridView.setAdapter(new TextViewAdapter(this));
+
+        gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
+                Toast.makeText(getApplicationContext(),
+                        "Capital is " + capitals.get(position), Toast.LENGTH_SHORT).show();
+            }
+        });
+
+
     }
 
 
