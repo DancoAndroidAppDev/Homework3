@@ -21,12 +21,17 @@ public class TextViewAdapter extends BaseAdapter {
     private final static String TAG = TextViewAdapter.class.getCanonicalName();
 
     private final Context context;
+
     private final List<String> states;
 
     // Constructor
     public TextViewAdapter(Context context){
         this.context = context;
         states = Arrays.asList(context.getResources().getStringArray(R.array.states));
+    }
+
+    public List<String> getStates() {
+        return states;
     }
 
     @Override
@@ -52,7 +57,7 @@ public class TextViewAdapter extends BaseAdapter {
         int randColor = r.nextInt();
         textView.setTextColor(randColor / 2);
         textView.setBackgroundColor(randColor);
-        textView.setTextSize(dp2Px(5));
+        textView.setTextSize(dp2Px(14));
         textView.setGravity(Gravity.CENTER_HORIZONTAL);
         textView.setTextAlignment(View.TEXT_ALIGNMENT_GRAVITY);
         textView.setHeight(dp2Px(38));

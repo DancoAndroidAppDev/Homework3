@@ -1,6 +1,7 @@
 package net.cozz.danco.homework3;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -33,6 +34,10 @@ public class MyActivity extends Activity {
             public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
                 Toast.makeText(getApplicationContext(),
                         "Capital is " + capitals.get(position), Toast.LENGTH_SHORT).show();
+
+                Intent intent = new Intent(getApplicationContext(), ViewFlagActivity.class);
+                intent.putExtra("position", position);
+                startActivity(intent);
             }
         });
 
