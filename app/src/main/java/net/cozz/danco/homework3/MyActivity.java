@@ -26,8 +26,6 @@ public class MyActivity extends Activity {
                 Arrays.asList(getResources().getStringArray(R.array.capitals));
 
         GridView gridView = (GridView) findViewById(R.id.grid_view);
-
-        // Instance of ImageAdapter Class
         gridView.setAdapter(new TextViewAdapter(this));
 
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -40,8 +38,6 @@ public class MyActivity extends Activity {
                 startActivity(intent);
             }
         });
-
-
     }
 
 
