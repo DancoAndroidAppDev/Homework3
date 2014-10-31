@@ -33,7 +33,7 @@ public class MyActivity extends Activity {
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
                 Toast.makeText(getApplicationContext(),
-                        "Capital is " + capitals.get(position), Toast.LENGTH_SHORT).show();
+                        "Capital is " + capitals.get(position), Toast.LENGTH_LONG).show();
 
                 Intent intent = new Intent(getApplicationContext(), ViewFlagActivity.class);
                 intent.putExtra("position", position);
