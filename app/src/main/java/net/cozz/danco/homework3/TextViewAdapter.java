@@ -57,7 +57,6 @@ public class TextViewAdapter extends BaseAdapter {
         textView.setTextAlignment(View.TEXT_ALIGNMENT_GRAVITY);
         textView.setHeight(dp2Px(38));
 
-
         return textView;
     }
 
@@ -67,6 +66,12 @@ public class TextViewAdapter extends BaseAdapter {
 
         final float scale = context.getResources().getDisplayMetrics().density;
         return (int) (dp * scale + 0.5f);
+    }
+
+    static class ViewHolder {
+        public TextView stateName;
+        public View leftBox;
+        public View rightBox;
     }
 
 }
