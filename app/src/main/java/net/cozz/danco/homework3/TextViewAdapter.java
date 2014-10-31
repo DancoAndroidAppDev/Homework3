@@ -30,10 +30,6 @@ public class TextViewAdapter extends BaseAdapter {
         states = Arrays.asList(context.getResources().getStringArray(R.array.states));
     }
 
-    public List<String> getStates() {
-        return states;
-    }
-
     @Override
     public int getCount() {
         return states.size();
@@ -51,13 +47,18 @@ public class TextViewAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View view, ViewGroup viewGroup) {
-        Random r = new Random(position);
+        Random r = new Random();
         TextView textView = new TextView(context);
         textView.setText(states.get(position));
-        int randColor = r.nextInt();
-        textView.setTextColor(randColor / 2);
-        textView.setBackgroundColor(randColor);
-        textView.setTextSize(dp2Px(14));
+        // I've tried several algorithms here to try to pick a good color contrast --
+        //  is there a recommended method?
+        int backgroundColor = Color.rgb(r.nextInt(192), r.nextInt(192), r.nextInt(192));
+        int textColor = backgroundColor < Integer.MAX_VALUE / 2 ?
+                backgroundColor * 2 :
+                backgroundColor / 2;
+        textView.setTextColor(Integer.MAX_VALUE);
+        textView.setBackgroundColor(backgroundColor);
+        textView.setTextSize(dp2Px(16));
         textView.setGravity(Gravity.CENTER_HORIZONTAL);
         textView.setTextAlignment(View.TEXT_ALIGNMENT_GRAVITY);
         textView.setHeight(dp2Px(38));
