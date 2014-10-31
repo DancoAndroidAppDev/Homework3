@@ -44,7 +44,7 @@ public class ViewFlagActivity extends Activity {
         int position = intent.getExtras().getInt("position");
 
         TextView textView = (TextView) findViewById(R.id.label);
-        textView.setText(String.format("State flag for %s",states.get(position) ));
+        textView.setText(String.format("%s State flag", states.get(position) ));
 
         ImageView imageView = (ImageView) findViewById(R.id.flag_image);
         imageView.setImageResource(flagsIds[position]);
