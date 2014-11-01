@@ -3,10 +3,13 @@ package net.cozz.danco.homework3;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.Arrays;
 import java.util.List;
@@ -38,16 +41,27 @@ public class ViewFlagActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_flag);
 
+        final List<String> capitals =
+                Arrays.asList(getResources().getStringArray(R.array.capitals));
+
         final List<String> states =
                 Arrays.asList(getResources().getStringArray(R.array.states));
         Intent intent = getIntent();
-        int position = intent.getExtras().getInt("position");
-
-        TextView textView = (TextView) findViewById(R.id.label);
-        textView.setText(String.format("%s State flag", states.get(position) ));
+        final int position = intent.getExtras().getInt("position");
 
         ImageView imageView = (ImageView) findViewById(R.id.flag_image);
         imageView.setImageResource(flagsIds[position]);
+        imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getApplicationContext(),
+                        "Capital is " + capitals.get(position), Toast.LENGTH_LONG).show();
+
+            }
+        });
+
+        TextView textView = (TextView) findViewById(R.id.label);
+        textView.setText(String.format("%s State flag", states.get(position)));
     }
 
 

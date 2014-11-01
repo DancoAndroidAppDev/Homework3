@@ -59,9 +59,9 @@ public class TextViewAdapter extends BaseAdapter {
         textView.setTextColor(Integer.MAX_VALUE);
         textView.setBackgroundColor(backgroundColor);
         textView.setTextSize(dp2Px(16));
-        textView.setGravity(Gravity.CENTER_HORIZONTAL);
+        textView.setGravity(Gravity.CENTER_HORIZONTAL | Gravity.CENTER_VERTICAL);
         textView.setTextAlignment(View.TEXT_ALIGNMENT_GRAVITY);
-        textView.setHeight(dp2Px(38));
+        textView.setHeight(dp2Px(56));
 
         return textView;
     }
@@ -73,11 +73,4 @@ public class TextViewAdapter extends BaseAdapter {
         final float scale = context.getResources().getDisplayMetrics().density;
         return (int) (dp * scale + 0.5f);
     }
-
-    static class ViewHolder {
-        public TextView stateName;
-        public View leftBox;
-        public View rightBox;
-    }
-
 }
