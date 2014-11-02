@@ -8,7 +8,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.Arrays;
@@ -26,7 +25,7 @@ public class MyActivity extends Activity {
                 Arrays.asList(getResources().getStringArray(R.array.capitals));
 
         GridView gridView = (GridView) findViewById(R.id.grid_view);
-        gridView.setAdapter(new TextViewAdapter(this));
+        gridView.setAdapter(new CellViewAdapter(this));
 
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View v, int position, long id) {

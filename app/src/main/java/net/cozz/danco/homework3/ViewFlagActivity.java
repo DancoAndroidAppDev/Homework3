@@ -36,6 +36,7 @@ public class ViewFlagActivity extends Activity {
             R.drawable.wisconsin, R.drawable.wyoming
     };
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,6 +49,8 @@ public class ViewFlagActivity extends Activity {
                 Arrays.asList(getResources().getStringArray(R.array.states));
         Intent intent = getIntent();
         final int position = intent.getExtras().getInt("position");
+
+        setTitle(String.format("%s State flag", states.get(position)));
 
         ImageView imageView = (ImageView) findViewById(R.id.flag_image);
         imageView.setImageResource(flagsIds[position]);
@@ -71,6 +74,7 @@ public class ViewFlagActivity extends Activity {
         getMenuInflater().inflate(R.menu.flag, menu);
         return true;
     }
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

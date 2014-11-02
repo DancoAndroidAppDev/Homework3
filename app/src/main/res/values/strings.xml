@@ -115,5 +115,6 @@
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_flag">State Flag</string>
+    <string name="state_name_placeholder">State Name</string>
 
 </resources>
