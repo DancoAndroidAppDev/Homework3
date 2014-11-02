@@ -16,11 +16,24 @@ import java.util.List;
 
 public class MyActivity extends Activity {
 
+    private int fontSize = 4;
+
+
+    public int getFontSize() {
+        return fontSize;
+    }
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my);
 
+        loadContent();
+    }
+
+
+    private void loadContent() {
         final List<String> capitals =
                 Arrays.asList(getResources().getStringArray(R.array.capitals));
 
@@ -54,7 +67,13 @@ public class MyActivity extends Activity {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-        if (id == R.id.action_settings) {
+        if (id == R.id.increase_font) {
+            fontSize += 1;
+            loadContent();
+            return true;
+        } else if (id == R.id.decrease_font) {
+            fontSize -= 1;
+            loadContent();
             return true;
         }
         return super.onOptionsItemSelected(item);

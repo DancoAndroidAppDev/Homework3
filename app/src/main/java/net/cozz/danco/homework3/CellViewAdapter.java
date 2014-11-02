@@ -20,11 +20,11 @@ import java.util.Random;
 public class CellViewAdapter extends BaseAdapter {
     private final static String TAG = CellViewAdapter.class.getCanonicalName();
 
-    private final Context context;
+    private final MyActivity context;
     private final List<String> states;
 
     // Constructor
-    public CellViewAdapter(Context context){
+    public CellViewAdapter(MyActivity context){
         this.context = context;
         states = Arrays.asList(context.getResources().getStringArray(R.array.states));
     }
@@ -70,7 +70,7 @@ public class CellViewAdapter extends BaseAdapter {
             textView.setText(states.get(position));
             // I've tried several algorithms here to try to pick a good color contrast --
             //  is there a recommended method?
-            textView.setTextSize(dp2Px(5));
+            textView.setTextSize(dp2Px(context.getFontSize()));
             textView.setTextColor(Integer.MAX_VALUE);
             textView.setGravity(Gravity.CENTER_HORIZONTAL | Gravity.CENTER_VERTICAL);
             textView.setTextAlignment(View.TEXT_ALIGNMENT_GRAVITY);
