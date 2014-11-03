@@ -7,6 +7,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.BaseAdapter;
 import android.widget.GridView;
 import android.widget.Toast;
 
@@ -18,6 +19,7 @@ public class MyActivity extends Activity {
 
     private int fontSize = 4;
 
+    private BaseAdapter adapter = null;
 
     public int getFontSize() {
         return fontSize;
@@ -29,6 +31,7 @@ public class MyActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my);
 
+        adapter = new CellViewAdapter(this);
         loadContent();
     }
 
@@ -38,7 +41,7 @@ public class MyActivity extends Activity {
                 Arrays.asList(getResources().getStringArray(R.array.capitals));
 
         GridView gridView = (GridView) findViewById(R.id.grid_view);
-        gridView.setAdapter(new CellViewAdapter(this));
+        gridView.setAdapter(adapter);
 
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View v, int position, long id) {

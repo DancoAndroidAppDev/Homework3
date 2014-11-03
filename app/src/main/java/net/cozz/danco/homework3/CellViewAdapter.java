@@ -23,6 +23,9 @@ public class CellViewAdapter extends BaseAdapter {
     private final MyActivity context;
     private final List<String> states;
 
+    boolean isFirstView = true;
+    private final int[] colors = new int[50];
+
     // Constructor
     public CellViewAdapter(MyActivity context){
         this.context = context;
@@ -57,8 +60,15 @@ public class CellViewAdapter extends BaseAdapter {
             LayoutInflater inflater = LayoutInflater.from(context);
             view = inflater.inflate(R.layout.cell_layout, null);
 
+
             Random r = new Random();
-            int backgroundColor = Color.rgb(r.nextInt(192), r.nextInt(192), r.nextInt(192));
+            if (isFirstView) {
+                isFirstView = false;
+                for (int i = 0; i < colors.length; i++) {
+                    colors[i] = Color.rgb(r.nextInt(192), r.nextInt(192), r.nextInt(192));
+                }
+            }
+            int backgroundColor = colors[position];
             int textColor = backgroundColor < Integer.MAX_VALUE / 2 ?
                     backgroundColor * 2 :
                     backgroundColor / 2;
