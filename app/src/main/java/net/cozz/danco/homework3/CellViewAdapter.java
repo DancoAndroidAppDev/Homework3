@@ -80,7 +80,9 @@ public class CellViewAdapter extends BaseAdapter {
             textView.setText(states.get(position));
             // I've tried several algorithms here to try to pick a good color contrast --
             //  is there a recommended method?
-            textView.setTextSize(dp2Px(context.getFontSize()));
+            if (!isFirstView) {
+                textView.setTextSize(dp2Px(context.getFontSize()));
+            }
             textView.setTextColor(Integer.MAX_VALUE);
             textView.setGravity(Gravity.CENTER_HORIZONTAL | Gravity.CENTER_VERTICAL);
             textView.setTextAlignment(View.TEXT_ALIGNMENT_GRAVITY);
